@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block internal/private paths
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://biohubventure.com/sitemap.xml

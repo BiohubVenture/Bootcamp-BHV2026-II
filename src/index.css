@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF8F3;
+    color: #1F2937;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Bio-Molecular Futurism Custom Utility Classes */
+.bg-paper-pattern {
+  background-color: #FAF8F3;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(45, 155, 76, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(0, 61, 122, 0.05) 0%, transparent 40%);
+}
+
+/* Anime Bio-Energy Flow Animations */
+@keyframes animeDashFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -120;
+  }
+}
+
+@keyframes animeGlowPulse {
+  0%, 100% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 8px rgba(122, 205, 66, 0.7)) drop-shadow(0 0 16px rgba(45, 155, 76, 0.4));
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(122, 205, 66, 0.95)) drop-shadow(0 0 28px rgba(91, 184, 214, 0.6));
+    transform: scale(1.05);
+  }
+}
+
+@keyframes sporeFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) translateX(8px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(-10px) translateX(-6px) rotate(240deg);
+  }
+}
+
+.animate-anime-dash {
+  animation: animeDashFlow 6s linear infinite;
+}
+
+.animate-anime-dash-fast {
+  animation: animeDashFlow 3.5s linear infinite;
+}
+
+.animate-anime-glow {
+  animation: animeGlowPulse 3s ease-in-out infinite;
+}
+
+.animate-spore {
+  animation: sporeFloat 7s ease-in-out infinite;
+}
+
+/* Glassmorphism Card Premium */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 50px -10px rgba(0, 61, 122, 0.1), 0 0 30px rgba(45, 155, 76, 0.08);
+}
+
+.glass-premium:hover {
+  border-color: rgba(122, 205, 66, 0.6);
+  box-shadow: 0 25px 60px -10px rgba(0, 61, 122, 0.15), 0 0 45px rgba(122, 205, 66, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F3;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D9B4C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #003D7A;
+}
