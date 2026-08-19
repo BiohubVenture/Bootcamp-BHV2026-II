@@ -31,13 +31,9 @@ export default function Footer({ currentLang }) {
             <div className="flex items-center space-x-3">
               <Link to="/">
                 <img 
-                  src="/logoBHV.png" 
+                  src="/LogoBHV2026.png" 
                   alt="Biohub Venture Logo" 
-                  className="h-10 w-auto object-contain brightness-0 invert"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='40' viewBox='0 0 180 40'%3E%3Ctext x='0' y='28' fill='white' font-family='sans-serif' font-weight='bold' font-size='20'%3EBiohub Venture%3E%3C/text%3E%3C/svg%3E";
-                  }}
+                  className="h-12 w-auto object-contain bg-white/10 rounded-xl p-1 backdrop-blur-xs"
                 />
               </Link>
             </div>

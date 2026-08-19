@@ -61,22 +61,12 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
         <div className="flex items-center justify-between h-20">
           
           {/* Left: Logo */}
-          <Link to="/" className="flex items-center space-x-3 flex-shrink-0 group">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-bio-greenDark via-bio-green to-bio-neon p-0.5 shadow-md group-hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-bio-cream rounded-[14px] flex items-center justify-center">
-                <span className="font-mono font-black text-lg text-bio-navy group-hover:text-bio-green transition-colors">
-                  BHV
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-xl tracking-tight text-bio-navy font-heading flex items-center">
-                Biohub<span className="text-bio-green ml-0.5">Venture</span>
-              </span>
-              <span className="text-[10px] uppercase font-extrabold tracking-widest text-bio-greenDark -mt-1">
-                Amazonian Biotech
-              </span>
-            </div>
+          <Link to="/" className="flex items-center flex-shrink-0 group py-1">
+            <img
+              src="/LogoBHV2026.png"
+              alt="Biohub Venture"
+              className="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
 
           {/* Center: Desktop Navigation Links */}
