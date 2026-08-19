@@ -40,17 +40,18 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
           <div className="flex items-center space-x-3 justify-center sm:justify-end">
             <button
               onClick={onOpenSrl}
-              className="bg-bio-green/20 hover:bg-bio-green/40 text-bio-neon px-2.5 py-0.5 rounded text-[10px] uppercase font-extrabold border border-bio-green/40 flex items-center transition-colors"
+              className="bg-bio-green/20 hover:bg-bio-green/40 text-bio-neon px-2.5 py-0.5 rounded text-[10px] uppercase font-extrabold border border-bio-green/40 flex items-center transition-colors cursor-pointer"
             >
               <BarChart3 className="w-3 h-3 mr-1" />
               <span>Evaluar Madurez SRL</span>
             </button>
-            <Link
-              to="/apply"
-              className="text-white hover:text-bio-neon transition-colors underline decoration-bio-green decoration-2 underline-offset-2 flex items-center font-black"
+            <button
+              type="button"
+              onClick={onOpenApply}
+              className="text-white hover:text-bio-neon transition-colors underline decoration-bio-green decoration-2 underline-offset-2 flex items-center font-black cursor-pointer bg-transparent border-0 p-0"
             >
               <span>{t.announcement.applyLink}</span>
-            </Link>
+            </button>
           </div>
 
         </div>
@@ -59,30 +60,36 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Left: Prominent Brand Logo */}
-          <div className="flex items-center flex-shrink-0">
-            <Link to="/" className="flex items-center group">
-              <img 
-                src="/logoBHV.png" 
-                alt="Biohub Venture Logo" 
-                className="h-12 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='50' viewBox='0 0 220 50'%3E%3Crect width='220' height='50' rx='8' fill='%23003D7A'/%3E%3Ctext x='15' y='32' fill='white' font-family='sans-serif' font-weight='bold' font-size='20'%3EBiohub Venture%3E%3C/text%3E%3C/svg%3E";
-                }}
-              />
-            </Link>
-          </div>
+          {/* Left: Logo */}
+          <Link to="/" className="flex items-center space-x-3 flex-shrink-0 group">
+            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-bio-greenDark via-bio-green to-bio-neon p-0.5 shadow-md group-hover:scale-105 transition-transform duration-300">
+              <div className="w-full h-full bg-bio-cream rounded-[14px] flex items-center justify-center">
+                <span className="font-mono font-black text-lg text-bio-navy group-hover:text-bio-green transition-colors">
+                  BHV
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-extrabold text-xl tracking-tight text-bio-navy font-heading flex items-center">
+                Biohub<span className="text-bio-green ml-0.5">Venture</span>
+              </span>
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-bio-greenDark -mt-1">
+                Amazonian Biotech
+              </span>
+            </div>
+          </Link>
 
-          {/* Center: Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-6 lg:space-x-7 text-sm font-bold mx-auto">
+          {/* Center: Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
-                className={({ isActive }) => 
-                  `relative py-1 transition-colors group flex items-center ${
-                    isActive ? 'text-bio-green font-extrabold' : 'text-bio-navy hover:text-bio-green'
+                className={({ isActive }) =>
+                  `px-3 py-2 rounded-xl text-xs font-extrabold tracking-wide uppercase transition-all duration-200 relative group ${
+                    isActive
+                      ? 'text-bio-green bg-bio-green/10'
+                      : 'text-bio-navy hover:text-bio-green hover:bg-bio-paper'
                   }`
                 }
               >
@@ -104,7 +111,7 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
             {/* SRL Readiness Calculator Trigger */}
             <button
               onClick={onOpenSrl}
-              className="flex items-center space-x-1.5 text-xs font-bold text-bio-navy border border-bio-navy/20 px-3 py-2 rounded-xl hover:bg-bio-green/10 hover:border-bio-green transition shadow-2xs"
+              className="flex items-center space-x-1.5 text-xs font-bold text-bio-navy border border-bio-navy/20 px-3 py-2 rounded-xl hover:bg-bio-green/10 hover:border-bio-green transition shadow-2xs cursor-pointer"
             >
               <BarChart3 className="w-4 h-4 text-bio-green" />
               <span>Evaluar SRL</span>
@@ -114,7 +121,7 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
             <div className="relative">
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center space-x-1.5 text-xs font-bold text-bio-navy border border-bio-navy/20 px-3 py-2 rounded-xl hover:bg-bio-paper transition shadow-2xs"
+                className="flex items-center space-x-1.5 text-xs font-bold text-bio-navy border border-bio-navy/20 px-3 py-2 rounded-xl hover:bg-bio-paper transition shadow-2xs cursor-pointer"
               >
                 <Globe className="w-4 h-4 text-bio-green" />
                 <span>{currentLang}</span>
@@ -134,7 +141,7 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
                         onSelectLang(l.code);
                         setLangDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-3.5 py-2 text-xs font-bold transition-colors flex items-center justify-between ${
+                      className={`w-full text-left px-3.5 py-2 text-xs font-bold transition-colors flex items-center justify-between cursor-pointer ${
                         currentLang === l.code 
                           ? 'text-bio-green bg-bio-neon/15 font-black' 
                           : 'text-bio-navy hover:bg-bio-cream'
@@ -148,10 +155,10 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
               )}
             </div>
 
-            {/* Apply Button */}
+            {/* Apply Button - Opens ApplyModal */}
             <button
-              onClick={() => navigate('/apply')}
-              className="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-bio-green rounded-xl shadow-md hover:bg-bio-greenDark hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+              onClick={onOpenApply}
+              className="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-bio-green rounded-xl shadow-md hover:bg-bio-greenDark hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
             >
               <Sparkles className="w-4 h-4 mr-1.5 text-bio-neon" />
               <span>{t.nav.applyBtn}</span>
@@ -169,8 +176,8 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
             </button>
 
             <button
-              onClick={() => navigate('/apply')}
-              className="px-3.5 py-2 text-xs font-bold text-white bg-bio-green rounded-lg"
+              onClick={onOpenApply}
+              className="px-3.5 py-2 text-xs font-bold text-white bg-bio-green rounded-lg cursor-pointer"
             >
               {t.nav.applyBtn}
             </button>
@@ -186,51 +193,42 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-bio-paper border-b border-bio-navy/10 px-4 pt-2 pb-6 space-y-3">
-          <div className="space-y-2">
+        <div className="lg:hidden bg-white border-b border-bio-navy/10 px-4 pt-3 pb-6 space-y-3">
+          <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-bold transition-colors ${
-                    isActive ? 'bg-bio-green text-white font-extrabold' : 'text-bio-navy hover:bg-bio-cream hover:text-bio-green'
+                  `px-4 py-2.5 rounded-xl text-sm font-extrabold tracking-wide uppercase transition-colors ${
+                    isActive
+                      ? 'text-bio-green bg-bio-neon/15 font-black'
+                      : 'text-bio-navy hover:bg-bio-cream'
                   }`
                 }
               >
                 {link.name}
               </NavLink>
             ))}
-          </div>
+          </nav>
 
-          <div className="pt-4 border-t border-bio-navy/10 flex items-center justify-between">
-            <div className="flex space-x-2 text-xs font-bold">
-              {['ES', 'EN', 'PT'].map((l) => (
-                <button
-                  key={l}
-                  onClick={() => onSelectLang(l)}
-                  className={`px-3 py-1.5 rounded ${currentLang === l ? 'bg-bio-navy text-white font-black' : 'bg-white text-bio-navy'}`}
-                >
-                  {l}
-                </button>
-              ))}
-            </div>
-
+          <div className="pt-3 border-t border-bio-navy/10 flex flex-col space-y-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                navigate('/apply');
+                onOpenApply();
               }}
-              className="px-5 py-2 text-sm font-bold text-white bg-bio-green rounded-lg"
+              className="w-full py-3 rounded-xl bg-bio-green text-white text-xs font-black uppercase tracking-wider text-center shadow-sm"
             >
               {t.nav.applyBtn}
             </button>
           </div>
         </div>
       )}
+
     </header>
   );
 }
