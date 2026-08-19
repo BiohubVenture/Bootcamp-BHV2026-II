@@ -53,11 +53,11 @@ export default function StartupsSection({ currentLang }) {
                 onClick={() => setSelectedStartup(startup)}
                 className="retro-card overflow-hidden cursor-pointer flex flex-col justify-between hover:border-bio-green transition-all duration-300 group bg-white"
               >
-                <div className="relative h-48 bg-bio-navyDeep overflow-hidden">
+                <div className="relative h-60 sm:h-64 bg-bio-navyDeep overflow-hidden">
                   <img 
                     src={startup.image} 
                     alt={startup.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-95"
                   />
                   
                   <div className="absolute top-3 right-3 px-2.5 py-1 rounded bg-bio-green text-white text-xs font-black shadow-md">

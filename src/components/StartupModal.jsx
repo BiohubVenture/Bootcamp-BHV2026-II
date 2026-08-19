@@ -13,11 +13,11 @@ export default function StartupModal({ startup, onClose, onEditRequested }) {
       <div className="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl border border-bio-navy/10 relative my-8 max-h-[90vh] flex flex-col">
         
         {/* Startup Hero Header */}
-        <div className="relative h-52 bg-bio-navyDeep">
+        <div className="relative h-64 sm:h-72 bg-bio-navyDeep">
           <img 
             src={startup.image} 
             alt={startup.name} 
-            className="w-full h-full object-cover opacity-80"
+            className="w-full h-full object-cover object-top opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bio-navyDark via-bio-navyDark/60 to-transparent" />
           

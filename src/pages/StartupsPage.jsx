@@ -341,11 +341,11 @@ export default function StartupsPage({ currentLang }) {
                     className="p-5 rounded-2xl bg-white border border-gray-200 hover:border-bio-green hover:shadow-md transition-all duration-200 cursor-pointer group flex flex-col md:flex-row gap-5"
                   >
                     {/* Left Thumbnail Image */}
-                    <div className="w-full md:w-44 h-36 md:h-auto rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 relative">
+                    <div className="w-full md:w-56 h-48 md:h-48 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 relative">
                       <img 
                         src={startup.image} 
                         alt={startup.name} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       />
                       <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs text-white text-[10px] font-black">
                         {startup.rank}
