@@ -91,10 +91,10 @@ export const TRANSLATIONS = {
     nextCohort: {
       badge: 'Convocatoria 2026-II',
       title1: 'Próxima cohorte',
-      title2: 'Octubre – Diciembre 2026',
+      title2: 'Setiembre – Noviembre 2026',
       dates: 'Aplicaciones abiertas hasta el 15 de septiembre',
       spots: 'Cupos limitados: 15 startups',
-      applyNow: 'Aplicar ahora'
+      applyNow: 'Revisa las Bases'
     },
     footer: {
       tagline: 'El hub de aceleración y financiamiento para startups de bioeconomía amazónica en LATAM. Impulsado por IGBM, BioGenia y Scale Incubadora.',
@@ -223,10 +223,10 @@ export const TRANSLATIONS = {
     nextCohort: {
       badge: 'Cohort 2026-II Call',
       title1: 'Next Cohort',
-      title2: 'October – December 2026',
+      title2: 'September – November 2026',
       dates: 'Applications open until September 15',
       spots: 'Limited spots: 15 startups',
-      applyNow: 'Apply Now'
+      applyNow: 'Review Official Rules'
     },
     footer: {
       tagline: 'The acceleration and funding hub for Amazonian bioeconomy startups in LATAM. Powered by IGBM, BioGenia, and Scale Incubator.',
@@ -354,11 +354,11 @@ export const TRANSLATIONS = {
     },
     nextCohort: {
       badge: 'Convocatória 2026-II',
-      title1: 'Próxima Coorte',
-      title2: 'Outubro – Dezembro 2026',
+      title1: 'Próxima coorte',
+      title2: 'Setembro – Novembro 2026',
       dates: 'Inscrições abertas até 15 de setembro',
       spots: 'Vagas limitadas: 15 startups',
-      applyNow: 'Inscreva-se já'
+      applyNow: 'Revise o Regulamento'
     },
     footer: {
       tagline: 'O hub de aceleração e financiamento para startups de bioeconomia amazônica na LATAM. Movido por IGBM, BioGenia e Incubadora Scale.',
