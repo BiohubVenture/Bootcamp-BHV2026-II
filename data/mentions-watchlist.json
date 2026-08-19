@@ -1,0 +1,15 @@
+{
+  "entities": [
+    "BioHubVenture",
+    "Biohub Venture",
+    "Api-Robotics",
+    "MIZETA",
+    "Pompom",
+    "CRYBS",
+    "LarvaGo",
+    "Chakra",
+    "DragoSense"
+  ],
+  "newsQuerySuffix": "(startup OR biotecnología OR bioeconomía OR premio OR incubadora)",
+  "maxResultsPerQuery": 10
+}

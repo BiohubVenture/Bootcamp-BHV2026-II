@@ -1,0 +1,30 @@
+name: Collect extended mentions through Agent Reach
+
+on:
+  schedule:
+    - cron: '30 13 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    # This needs a BHV-managed self-hosted runner where Agent Reach was installed
+    # and only the channels explicitly authorised by BHV are configured.
+    runs-on: [self-hosted, bhv-agent-reach]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Verify Agent Reach channels
+        run: agent-reach doctor --json
+      - name: Search and queue extended public mentions
+        run: node scripts/collect-agent-reach.mjs
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
