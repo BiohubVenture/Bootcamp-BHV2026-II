@@ -54,11 +54,11 @@ export const CONSORTIUM = [
     image: '/image_scale.png',
     objectPosition: 'center center',
     shortDesc: 'Plataforma especializada en incubación de startups de triple impacto, desarrollo empresarial y conexión con el ecosistema emprendedor.',
-    description: 'Incubadora especializada en emprendimientos de triple impacto con experiencia en programas, mentoría y acompañamiento de startups. En BHV fortalece la validación de mercado, el modelo de negocio y la preparación de los equipos para crecer y conectarse con el ecosistema emprendedor.',
+    description: 'Incubadora especializada en emprendimientos de triple impacto con experiencia en programas, mentoría y acompañamiento de startups. En BHV fortalece la validación de modelo de negocio y la preparación de los equipos para crecer y conectarse con el ecosistema emprendedor.',
     contribution: [
       'Validación de modelo de negocio y Go-To-Market.',
       'Mentoría para crecimiento empresarial de triple impacto.',
-      'Conexión con la red de mentores y ecosistema de financiamiento.'
+      'Conexión con redes de ángeles inversionistas y fondos de impacto.'
     ]
   }
 ];
@@ -138,6 +138,117 @@ export const SERVICES = [
   }
 ];
 
+export const SERVICES_CATALOG = [
+  {
+    id: 'bio-incubation',
+    title: 'Incubación y Aceleración Bio',
+    subtitle: 'De la idea científica al modelo de negocio escalable',
+    category: 'Venture Building',
+    icon: 'Rocket',
+    badge: 'Core BHV',
+    tagline: 'Acompañamiento intensivo de 8 semanas para startups de bioeconomía amazónica con mentoría científica, tecnológica y de negocios.',
+    features: [
+      'Diagnóstico SRL (Startup Readiness Level) y TRL con el consorcio.',
+      'Validación científica de prototipos en laboratorios de IGBM.',
+      'Estructuración de modelo de negocio y unit economics con Scale.',
+      'Estrategia de propiedad intelectual y empaquetamiento con BioGenia.',
+      'Pitch training y acceso al Demo Day con inversionistas regionales.'
+    ],
+    target: 'Startups en etapas tempranas (TRL 3-6) con base científica en bioeconomía.',
+    deliverable: 'Dossier de validación técnica, deck para inversionistas y plan de escalamiento.'
+  },
+  {
+    id: 'scientific-validation',
+    title: 'Validación Científica y Ensayos de Laboratorio',
+    subtitle: 'Evidencia técnica rigurosa para tu producto biotecnológico',
+    category: 'I+D & Laboratorios',
+    icon: 'FlaskConical',
+    badge: 'IGBM Lab',
+    tagline: 'Servicios especializados de biología molecular, genómica, microbiología y bioinformática para respaldar la eficacia de tus bioinsumos.',
+    features: [
+      'Ensayos microbiológicos in vitro y perfiles de actividad biológica.',
+      'Secuenciación y caracterización genómica de cepas nativas.',
+      'Bioinformática: análisis metagenómico y predicción in silico.',
+      'Diseño experimental y protocolos de estabilidad de formulaciones.',
+      'Informes técnicos certificados para trámites regulatorios.'
+    ],
+    target: 'Startups y empresas que necesitan certificar científicamente sus bioingredientes.',
+    deliverable: 'Informe técnico de validación científica con firma de investigadores IGBM.'
+  },
+  {
+    id: 'tech-transfer',
+    title: 'Propiedad Intelectual y Transferencia Tecnológica',
+    subtitle: 'Protege tu innovación y llévala al mercado con éxito',
+    category: 'Transferencia Tecnológica',
+    icon: 'ShieldCheck',
+    badge: 'BioGenia',
+    tagline: 'Asesoría integral en patentes, secretos industriales, acuerdos de transferencia de material (MTA) y cumplimiento de Nagoya.',
+    features: [
+      'Búsquedas de anterioridad y análisis de patentabilidad.',
+      'Redacción y tramitación de solicitudes de patentes nacionales e internacionales (PCT).',
+      'Cumplimiento del Protocolo de Nagoya y Contratos de Acceso a Recursos Genéticos.',
+      'Diseño de contratos de licenciamiento y acuerdos de transferencia tecnológica.',
+      'Vigilancia tecnológica e inteligencia competitiva en bioeconomía.'
+    ],
+    target: 'Investigadores, universidades y startups que generan activos de propiedad intelectual.',
+    deliverable: 'Estrategia de protección de PI y contratos de transferencia tecnológica listos para firma.'
+  },
+  {
+    id: 'open-innovation',
+    title: 'Innovación Abierta y Venture Client',
+    subtitle: 'Conecta desafíos corporativos con soluciones de startups',
+    category: 'Innovación Corporativa',
+    icon: 'Building2',
+    badge: 'Matchmaking',
+    tagline: 'Diseño y ejecución de programas de retos de innovación para grandes empresas que buscan incorporar soluciones de bioeconomía en su cadena de valor.',
+    features: [
+      'Mapeo y priorización de desafíos corporativos de sostenibilidad.',
+      'Scouting y selección de startups biotecnológicas en LATAM.',
+      'Diseño y facilitación de pruebas de concepto (PoC) y pilotos de campo.',
+      'Acuerdos de co-desarrollo y modelos de Venture Client.',
+      'Medición de impacto ambiental y alineación con metas ESG/Net-Zero.'
+    ],
+    target: 'Corporaciones de alimentos, cosmética, agroindustria y química verde.',
+    deliverable: 'Reporte de scouting, pilotos ejecutados y plan de integración comercial.'
+  },
+  {
+    id: 'impact-metrics',
+    title: 'Medición de Impacto y Certificación Bio',
+    subtitle: 'Cuantifica y certifica tu impacto regenerativo en la Amazonía',
+    category: 'Impacto & ESG',
+    icon: 'LineChart',
+    badge: 'Scale Impact',
+    tagline: 'Metodologías para medir, reportar y monetizar el impacto positivo en biodiversidad, reducción de carbono y desarrollo de comunidades.',
+    features: [
+      'Línea base y KPIs de impacto ambiental, social y económico.',
+      'Alineación con estándares de créditos de biodiversidad y carbono de alta integridad.',
+      'Monitoreo de trazabilidad y deforestación cero en cadenas de suministro.',
+      'Preparación para certificaciones B Corp, FSC, Orgánico y Comercio Justo.',
+      'Reportes de impacto para fondos de inversión de impacto y organismos multilaterales.'
+    ],
+    target: 'Empresas y startups que buscan monetizar su impacto o reportar bajo marcos ESG.',
+    deliverable: 'Matriz de impacto verificable y reporte listo para inversionistas de impacto.'
+  },
+  {
+    id: 'funding-strategy',
+    title: 'Estructuración Financiera y Acceso a Fondos CTI',
+    subtitle: 'Financiamiento no reembolsable y preparación para rondas de inversión',
+    category: 'Finanzas & Capital',
+    icon: 'Coins',
+    badge: 'Scale & BioGenia',
+    tagline: 'Formulación de proyectos para fondos públicos de innovación (ProInnóvate, CONCYTEC, fondecyt) y estructuración de rondas pre-seed/seed.',
+    features: [
+      'Identificación y postulación a fondos concursables no reembolsables de I+D+i.',
+      'Modelado financiero y valoración de startups de base científica.',
+      'Estructuración de instrumentos de inversión: SAFE, notas convertibles y equity.',
+      'Conexión directa con la red de ángeles inversionistas de BHV y fondos VC de impacto.',
+      'Data Room preparation y acompañamiento en Due Diligence técnico y legal.'
+    ],
+    target: 'Startups y grupos de investigación que buscan apalancar capital para escalar.',
+    deliverable: 'Propuestas de fondos CTI presentadas y Data Room estructurado para inversores.'
+  }
+];
+
 export const RFS_ITEMS = [
   {
     id: 1,
@@ -145,6 +256,7 @@ export const RFS_ITEMS = [
     title: 'Beneficio Compartido y Trazabilidad',
     pillar: 'Pillar I',
     pillarName: 'Trazabilidad & Gobernanza',
+    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Soluciones blockchain e identidades digitales para asegurar el cumplimiento del Protocolo de Nagoya y el reparto justo de beneficios.',
     tam: 'USD 2.5B',
     problem: 'La falta de mecanismos transparentes de trazabilidad en cadenas de suministro amazónicas impide que las comunidades locales reciban regalías sobre recursos genéticos.',
@@ -168,6 +280,7 @@ export const RFS_ITEMS = [
     title: 'Bioinsumos y Biofertilizantes',
     pillar: 'Pillar II',
     pillarName: 'Biotecnología Agrícola',
+    image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Formulaciones microbianas autóctonas para regenerar suelos degradados y reemplazar fertilizantes sintéticos de carbono intensivo.',
     tam: 'USD 4.8B',
     problem: 'La agricultura convencional depende de nitrógeno sintético que degrada suelos amazónicos y genera emisiones masivas de gases de efecto invernadero.',
@@ -191,6 +304,7 @@ export const RFS_ITEMS = [
     title: 'Alimentos del Futuro',
     pillar: 'Pillar III',
     pillarName: 'FoodTech & Nutrición',
+    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Ingredientes superfood, proteínas alternativas y biomoléculas extraídas de plantas, hongos y microalgas amazónicas.',
     tam: 'USD 6.1B',
     problem: 'Los recursos de la bioeconomía amazónica (ej. camu camu, aguaje, sacha inchi) se exportan sin procesar, perdiendo hasta 90% del valor agregado.',
@@ -214,6 +328,7 @@ export const RFS_ITEMS = [
     title: 'Biotecnología para la Salud Humana',
     pillar: 'Pillar IV',
     pillarName: 'HealthTech & Farma',
+    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Plataformas de descubrimiento de fármacos y moléculas bioactivas extraídas de la biodiversidad amazónica.',
     tam: 'USD 12.0B',
     problem: 'Menos del 1% de las plantas y microorganismos de la cuenca amazónica han sido caracterizados médicamente para descubrimiento terapéutico.',
@@ -237,6 +352,7 @@ export const RFS_ITEMS = [
     title: 'Biotecnología para la Salud Animal',
     pillar: 'Pillar V',
     pillarName: 'AgroVet Bio',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Aditivos nutricionales, vacunas biológicas y fitoterapéuticos para acuicultura y ganadería sostenible.',
     tam: 'USD 3.2B',
     problem: 'El uso excesivo de antibióticos en la producción animal genera resistencia bacteriana y contamina los ecosistemas acuáticos amazónicos.',
@@ -260,6 +376,7 @@ export const RFS_ITEMS = [
     title: 'Tecnologías para la Biodiversidad',
     pillar: 'Pillar VI',
     pillarName: 'DeepTech & IoT',
+    image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Sensores de eDNA, bioacústica con IA y drones de monitoreo de dosel para cuantificar créditos de biodiversidad.',
     tam: 'USD 1.8B',
     problem: 'La medición de biodiversidad amazónica es costosa, lenta y propensa a errores manuales, impidiendo el financiamiento verde transparente.',
@@ -283,6 +400,7 @@ export const RFS_ITEMS = [
     title: 'Bioeconomía Circular',
     pillar: 'Pillar VII',
     pillarName: 'Materiales & Residuos',
+    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Transformación de biomasa de desecho agrícola e industrial en bioplásticos, empaques miceliales y biochar.',
     tam: 'USD 5.5B',
     problem: 'Miles de toneladas de cascarilla de cacao, bagazo de fruta y madera de desecho se queman o pudren liberando metano en la región.',
@@ -306,6 +424,7 @@ export const RFS_ITEMS = [
     title: 'Turismo Regenerativo y Bioemprendimientos',
     pillar: 'Pillar VIII',
     pillarName: 'Comunidades & Servicios',
+    image: 'https://images.unsplash.com/photo-1608248597359-00e99d8b7468?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Plataformas tecnológicas que conectan turismo de ciencia y conservación con financiamiento directo a comunidades locales.',
     tam: 'USD 1.2B',
     problem: 'El ecoturismo tradicional genera ingresos volátiles que raras veces financian laboratorios de conservación comunitarios.',
@@ -329,6 +448,7 @@ export const RFS_ITEMS = [
     title: 'Inteligencia Artificial Aplicada a Biología',
     pillar: 'Pillar IX',
     pillarName: 'Bio-AI & Bioinformática',
+    image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Modelos de lenguaje biológico (LLMs de proteínas) para predecir enzimas amazónicas hiperactivas y vías metabólicas.',
     tam: 'USD 8.4B',
     problem: 'El volumen de datos de secuenciación metagenómica amazónica supera la capacidad analítica humana sin modelos de IA avanzados.',
@@ -352,6 +472,7 @@ export const RFS_ITEMS = [
     title: 'Financiamiento e Inversión Verde',
     pillar: 'Pillar X',
     pillarName: 'Climate FinTech',
+    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80',
     shortDesc: 'Mecanismos de Blended Finance, tokenización de créditos de carbono y bonos de biodiversidad para la economía forestal.',
     tam: 'USD 9.0B',
     problem: 'Los pequeños productores sostenibles carecen de historial crediticio tradicional para acceder a financiamiento de bajo costo.',
@@ -601,7 +722,6 @@ export const TESTIMONIALS = [
   }
 ];
 
-// Verified Real Metrics requested by user
 export const METRICS = [
   { value: '2', label: 'Cohortes completadas', icon: 'Award' },
   { value: '30', label: 'Startups incubadas', icon: 'Rocket' },
