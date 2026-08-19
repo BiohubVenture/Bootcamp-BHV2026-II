@@ -228,7 +228,7 @@ export default function SubmitTechnologyModal({ isOpen, onClose, userSession, ta
                         required
                         value={formData.ownerName}
                         onChange={handleChange}
-                        placeholder="Ej. CRIPES, BioSafe Me, ApiRobotics"
+                        placeholder="Ej. CRYBS, BioSafe Me, ApiRobotics"
                         className="w-full px-3.5 py-2.5 rounded-xl border border-bio-navy/15 focus:border-bio-green focus:outline-none bg-bio-paper/30 font-bold text-bio-navy"
                       />
                     </div>

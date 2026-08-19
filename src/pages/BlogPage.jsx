@@ -94,7 +94,7 @@ export default function BlogPage({ currentLang }) {
       avatar: '/icon_bhv.png',
       timeAgo: 'Hace 6 horas',
       title: 'Reels: Dentro de nuestros laboratorios de validación molecular 🔬🧬',
-      content: 'Nuestros biofundadores no solo crean modelos de negocio, ¡validan su ciencia en laboratorio real! Aquí vemos las pruebas metagenómicas de la startup CRIPES para diagnóstico temprano.',
+      content: 'Nuestros biofundadores no solo crean modelos de negocio, ¡validan su ciencia en laboratorio real! Aquí vemos las pruebas metagenómicas de la startup CRYBS para diagnóstico temprano.',
       tags: ['#BiohubVenture', '#CienciaViva', '#DeepTech', '#AmazoniaSostenible'],
       image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=800&q=80',
       likes: 384,

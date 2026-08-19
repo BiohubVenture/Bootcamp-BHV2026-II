@@ -118,7 +118,7 @@ export default function InsideBHVSection({ onOpenApply, currentLang }) {
       id: 5,
       author: 'Carlos Rivera',
       role: 'CEO (1er Puesto Cohorte)',
-      company: 'CRIPES',
+      company: 'CRYBS',
       country: 'Perú 🇵🇪',
       duration: '0:50',
       tag: 'HealthTech & Control Plagas',

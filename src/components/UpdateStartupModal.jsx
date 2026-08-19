@@ -93,7 +93,7 @@ export default function UpdateStartupModal({ isOpen, onClose }) {
                     required
                     value={formData.startupName}
                     onChange={handleChange}
-                    placeholder="Ej. CRIPES, BioSafe Me, MIZETA..."
+                    placeholder="Ej. CRYBS, BioSafe Me, MIZETA..."
                     className="w-full px-3.5 py-2.5 rounded-xl border border-bio-navy/15 focus:outline-none focus:border-bio-green bg-bio-paper/30 text-bio-navy"
                   />
                 </div>

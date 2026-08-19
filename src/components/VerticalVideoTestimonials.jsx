@@ -50,16 +50,16 @@ export default function VerticalVideoTestimonials({ currentLang }) {
     },
     {
       id: 4,
-      author: 'Elena Viteri',
-      role: 'Lead Researcher',
-      company: 'BioPlas',
-      country: 'Ecuador 🇪🇨',
+      author: 'Frank Sarnaqué',
+      role: 'CEO & Co-founder',
+      company: 'MIZETA',
+      country: 'Perú 🇵🇪',
       duration: '1:05',
-      tag: 'Bioplásticos',
-      poster: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80',
-      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
-      quote: 'En solo 8 semanas pasamos de un prototipo de laboratorio a una formulación polimérica patente solicitada.',
-      highlight: 'Patente en trámite PCT',
+      tag: 'Biomateriales & Micelio',
+      poster: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      quote: 'En solo 8 semanas optimizamos el crecimiento de nuestras cepas de micelio con el equipo de BioGenia y creamos empaques 100% compostables.',
+      highlight: 'Premio Economía Circular',
       videoUrl: ''
     }
   ];
