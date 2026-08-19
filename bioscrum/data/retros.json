@@ -1,0 +1,11 @@
+[
+  {
+    "id": "RET-001",
+    "squad": "Research",
+    "sprint": "Sprint 02",
+    "keep": "La comunicación en los BioCheck-ins ha sido concisa y muy clara.",
+    "improve": "Definir mejor los criterios de aceptación en las fichas técnicas de startups.",
+    "try_next": "Implementar una plantilla compartida en Google Sheets para el vaciado de datos.",
+    "created_at": "2026-07-28"
+  }
+]

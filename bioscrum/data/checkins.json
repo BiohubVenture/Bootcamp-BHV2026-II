@@ -1,0 +1,14 @@
+[
+  {
+    "id": "CHK-201",
+    "bioambassador_id": "BIO-003",
+    "mission_id": "BHV-026",
+    "task_id": "",
+    "progress": "Infografia",
+    "next_action": "Contactar con startup",
+    "blocker": "Necesito contactos actualizados",
+    "has_blocker": true,
+    "resolved": false,
+    "date": "2026-08-16"
+  }
+]

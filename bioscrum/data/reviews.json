@@ -1,0 +1,42 @@
+[
+  {
+    "id": "REV-001",
+    "mission_id": "BHV-001",
+    "sprint": "Sprint 0",
+    "bioambassador_id": "BIO-001",
+    "completion": 4.5,
+    "quality": 4.5,
+    "collaboration": 4.8,
+    "impact": 4.5,
+    "early_delivered": true,
+    "base_points": 25,
+    "quality_bonus": 10,
+    "collaboration_bonus": 5,
+    "impact_bonus": 10,
+    "early_bonus": 5,
+    "final_points": 50,
+    "reviewer": "David Chaupis / Coordinación BHV",
+    "comments": "",
+    "created_at": "2026-08-16"
+  },
+  {
+    "id": "REV-002",
+    "mission_id": "BHV-001",
+    "sprint": "Sprint 0",
+    "bioambassador_id": "BIO-001",
+    "completion": 4.5,
+    "quality": 4.5,
+    "collaboration": 3.5,
+    "impact": 4.5,
+    "early_delivered": true,
+    "base_points": 25,
+    "quality_bonus": 10,
+    "collaboration_bonus": 0,
+    "impact_bonus": 10,
+    "early_bonus": 5,
+    "final_points": 50,
+    "reviewer": "David Chaupis / Coordinación BHV",
+    "comments": "",
+    "created_at": "2026-08-16"
+  }
+]

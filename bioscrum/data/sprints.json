@@ -1,0 +1,26 @@
+[
+  {
+    "id": "Sprint 0",
+    "name": "Sprint 0 — Preparación y Activación (Lanzamiento 2026-II)",
+    "start_date": "2026-08-16",
+    "end_date": "2026-08-23",
+    "status": "Active",
+    "goal": "Actualizar marketplace, lanzar convocatoria BHV 2026-II, radar de testimonios, retos corporativos y activar BioSCRUM."
+  },
+  {
+    "id": "Sprint 1",
+    "name": "Sprint 1 — Experiencia Digital y Conversión",
+    "start_date": "2026-08-24",
+    "end_date": "2026-09-06",
+    "status": "Planning",
+    "goal": "Integrar test interactivo de challenges, optimización web trilingüe, investor gateway y habilitación de GitHub."
+  },
+  {
+    "id": "Investigación",
+    "name": "Línea Paralela — Investigación BHV (Cohorte I)",
+    "start_date": "2026-08-16",
+    "end_date": "2026-09-30",
+    "status": "Active",
+    "goal": "Desarrollar manuscrito académico sobre lecciones financieras y análisis socio-técnico CTS de la cohorte anterior."
+  }
+]
