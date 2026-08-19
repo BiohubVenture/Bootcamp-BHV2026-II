@@ -1,9 +1,10 @@
 import { isSupabaseEnabled, supabase } from '../lib/supabase';
 import { TESTIMONIALS } from '../data/mockData';
+import { INITIAL_PUBLISHED_MENTIONS } from '../data/initialMentions';
 
 const PUBLIC_FIELDS = 'id,source_url,source_name,platform,author_name,author_role,title,quote,summary,mention_type,related_entities,occurred_at,published_at';
 
-const fallbackMentions = TESTIMONIALS.map((item, index) => ({
+const legacyTestimonials = TESTIMONIALS.map((item, index) => ({
   id: `fallback-${index}`,
   quote: item.quote,
   author_name: item.name,
@@ -14,6 +15,8 @@ const fallbackMentions = TESTIMONIALS.map((item, index) => ({
   source_url: null,
   isFallback: true,
 }));
+
+const fallbackMentions = INITIAL_PUBLISHED_MENTIONS.length ? INITIAL_PUBLISHED_MENTIONS : legacyTestimonials;
 
 export const getPublishedMentions = async ({ limit } = {}) => {
   if (!isSupabaseEnabled) return fallbackMentions;

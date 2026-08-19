@@ -37,6 +37,7 @@ for (const entity of watchlist.entities) {
     candidates.set(sourceUrl, {
       source_url: sourceUrl,
       canonical_url: sourceUrl,
+      dedupe_key: sourceUrl,
       source_name: result.author || new URL(sourceUrl).hostname,
       platform: 'web',
       author_name: result.author || null,

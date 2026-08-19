@@ -44,6 +44,7 @@ for (const result of results) {
     unique.set(sourceUrl, {
       source_url: sourceUrl,
       canonical_url: sourceUrl,
+      dedupe_key: sourceUrl,
       source_name: item.sourceName,
       platform: 'news',
       title: item.title,

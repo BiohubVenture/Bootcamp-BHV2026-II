@@ -2,8 +2,9 @@
 -- visible to visitors after a reviewer publishes them.
 create table public.media_mentions (
   id uuid primary key default gen_random_uuid(),
-  source_url text not null unique,
+  source_url text not null,
   canonical_url text not null,
+  dedupe_key text not null unique,
   source_name text not null,
   platform text not null default 'web',
   author_name text,

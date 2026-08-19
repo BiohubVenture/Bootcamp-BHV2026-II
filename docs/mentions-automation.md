@@ -8,7 +8,7 @@
 
 ## Despliegue inicial
 
-1. Aplica la migración `supabase/migrations/20260819161750_create_media_mentions.sql` en el proyecto de Supabase.
+1. Aplica las migraciones de `supabase/migrations/` en orden. La segunda carga las diez menciones iniciales verificadas ya publicadas.
 2. Asigna el claim `app_metadata.role` con valor `admin` o `editor` a cada persona que revisará las menciones. Nunca uses `user_metadata` para este permiso.
 3. En GitHub Actions agrega los secretos `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY`.
 4. Ejecuta manualmente el flujo **Collect public BioHub mentions** para poblar la primera cola.

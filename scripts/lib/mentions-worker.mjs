@@ -42,7 +42,7 @@ export async function upsertMentions(client, mentions) {
   if (!mentions.length) return { inserted: 0 };
   const { error } = await client
     .from('media_mentions')
-    .upsert(mentions, { onConflict: 'source_url', ignoreDuplicates: true });
+    .upsert(mentions, { onConflict: 'dedupe_key', ignoreDuplicates: true });
   if (error) throw new Error(`Supabase upsert failed: ${error.message}`);
   return { inserted: mentions.length };
 }
