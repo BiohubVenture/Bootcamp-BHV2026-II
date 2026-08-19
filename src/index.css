@@ -98,3 +98,28 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #003D7A;
 }
+
+/* Infinite Smooth Auto-Scrolling Marquee */
+@keyframes marqueeScrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollLeft 55s linear infinite;
+}
+
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-slow {
+  animation-duration: 75s;
+}
+
