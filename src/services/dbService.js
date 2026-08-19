@@ -6,11 +6,6 @@ import { supabase, isSupabaseEnabled } from '../lib/supabase';
 import { TOP_STARTUPS } from '../data/mockData';
 
 // ─── getStartupsDatabase ──────────────────────────────────────────────────────
-/**
- * Obtiene el catálogo completo de startups.
- * Supabase → fallback a mockData si DB no está disponible.
- * @returns {Promise<Array>}
- */
 export const getStartupsDatabase = async () => {
   if (isSupabaseEnabled) {
     const { data, error } = await supabase
@@ -24,7 +19,6 @@ export const getStartupsDatabase = async () => {
     if (error) console.warn('Supabase startups fetch failed, using mockData:', error.message);
   }
 
-  // Fallback: localStorage o mockData
   try {
     const saved = localStorage.getItem('bhv_startups_db');
     if (saved) {
@@ -50,7 +44,6 @@ export const saveTechnologySubmission = async (technologyData, existingStartupId
         .single();
 
       if (!error) return { success: true, entry: normalizeStartup(data), isUpdate: true };
-      console.warn('Supabase update failed, falling back to localStorage:', error.message);
     } else {
       const { data, error } = await supabase
         .from('startups')
@@ -59,7 +52,6 @@ export const saveTechnologySubmission = async (technologyData, existingStartupId
         .single();
 
       if (!error) return { success: true, entry: normalizeStartup(data), isUpdate: false };
-      console.warn('Supabase insert failed, falling back to localStorage:', error.message);
     }
   }
 
@@ -131,14 +123,59 @@ export const MOCK_CORPORATE_NEEDS = [
     ipExpectations: 'Licenciamiento exclusivo para distribución industrial',
     status: 'open',
     createdAt: new Date().toISOString()
+  },
+  {
+    id: 'corp-3',
+    isAnonymous: true,
+    companyName: 'Empresa Confidencial',
+    sector: 'Bebidas & Superfoods',
+    title: 'Microencapsulación de polifenoles de Aguaje sin alteración organoléptica en bebidas',
+    category: 'Alimentos del Futuro & Superfoods',
+    description: 'Corporativo líder de consumo masivo busca co-desarrollar tecnología de nano/microencapsulación para incorporar antioxidantes activos de Aguaje y Camu Camu en bebidas funcionales sin alterar sabor ni transparencia.',
+    urgency: '0 - 3 meses (Inmediato)',
+    estimatedBudget: 'USD $50K - $150K',
+    country: 'Perú',
+    collaborationTypes: ['codesarrollo', 'piloto', 'venture_client'],
+    ipExpectations: 'Acuerdo de co-desarrollo patentable con derecho preferente de suministro',
+    status: 'open',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'corp-4',
+    isAnonymous: true,
+    companyName: 'Empresa Confidencial',
+    sector: 'Cosmética & Cuidado Personal',
+    title: 'Aceites bio-refinados de Cacay y Majaz con certificación de reparto de beneficios Nagoya',
+    category: 'Cosmecéutica & Bioingredientes',
+    description: 'Multinacional cosmética busca vinculación con startups o cooperativas amazónicas para suministro escalable de bio-aceites prensados en frío con trazabilidad biotecnológica e impacto social verificado.',
+    urgency: '6 - 12 meses',
+    estimatedBudget: 'USD $150K+ (Alianza Estratégica)',
+    country: 'Brasil / Colombia / Perú',
+    collaborationTypes: ['transferencia', 'venture_client'],
+    ipExpectations: 'Contrato de suministro comercial exclusivo a largo plazo',
+    status: 'open',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'corp-5',
+    isAnonymous: false,
+    companyName: 'Danper / Aliado Agro',
+    sector: 'Agroindustria & Alimentos',
+    title: 'Bioremediación microbiana de suelos salinizados y degradados por cultivo intensivo',
+    category: 'Biotecnología Agrícola & Bioinsumos',
+    description: 'Empresa agroindustrial busca consorcios de biofertilizantes fúngicos o bacterianos que aceleren la fijación de nitrógeno y regeneren microbiota en suelos agrícolas en selva alta y costa.',
+    urgency: '3 - 6 meses',
+    estimatedBudget: 'USD $20K - $50K (Piloto Inicial)',
+    country: 'Perú',
+    collaborationTypes: ['piloto', 'codesarrollo'],
+    ipExpectations: 'Licenciamiento de uso agroindustrial con royalties sobre rendimiento',
+    status: 'open',
+    createdAt: new Date().toISOString()
   }
 ];
 
 const CORPORATE_STORAGE_KEY = 'bhv_corporate_needs_db';
 
-/**
- * Obtiene las demandas tecnológicas / retos de innovación empresarial.
- */
 export const getCorporateNeedsDatabase = async () => {
   if (isSupabaseEnabled) {
     try {
@@ -170,7 +207,6 @@ export const getCorporateNeedsDatabase = async () => {
     }
   }
 
-  // Fallback localStorage / Mock
   try {
     const saved = localStorage.getItem(CORPORATE_STORAGE_KEY);
     if (saved) {
@@ -182,9 +218,6 @@ export const getCorporateNeedsDatabase = async () => {
   return MOCK_CORPORATE_NEEDS;
 };
 
-/**
- * Registra una nueva necesidad tecnológica empresarial (Matchmaking).
- */
 export const saveCorporateNeedSubmission = async (needData) => {
   const entry = {
     id: `corp-${Date.now()}`,
@@ -237,7 +270,6 @@ export const saveCorporateNeedSubmission = async (needData) => {
     }
   }
 
-  // Fallback localStorage
   try {
     const list = await getCorporateNeedsDatabase();
     const updated = [entry, ...list];
@@ -247,8 +279,6 @@ export const saveCorporateNeedSubmission = async (needData) => {
     return { success: false, error };
   }
 };
-
-// ─── Helpers internos ─────────────────────────────────────────────────────────
 
 const normalizeStartup = (row) => ({
   id:          row.id,
