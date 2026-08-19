@@ -63,9 +63,10 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
           {/* Left: Logo */}
           <Link to="/" className="flex items-center flex-shrink-0 group py-1">
             <img
-              src="/LogoBHV2026.png"
+              src="/logoBHV.png"
               alt="Biohub Venture"
-              className="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-10 md:h-12 w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+              loading="eager"
             />
           </Link>
 
