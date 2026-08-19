@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X, ChevronDown, Sparkles, Globe, ArrowRight, Flame, BarChart3 } from 'lucide-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../data/translations';
+import bhvLogo from '../assets/logoBHV.png';
 
 export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLang }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -63,7 +64,7 @@ export default function Navbar({ onOpenApply, onOpenSrl, currentLang, onSelectLa
           {/* Left: Logo */}
           <Link to="/" className="flex items-center flex-shrink-0 group py-1">
             <img
-              src="/logoBHV.png"
+              src={bhvLogo}
               alt="Biohub Venture"
               className="h-10 md:h-12 w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
               loading="eager"

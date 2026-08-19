@@ -3,6 +3,7 @@ import { Send, Linkedin, Twitter, Instagram, Youtube, CheckCircle2 } from 'lucid
 import { Link } from 'react-router-dom';
 import { TRANSLATIONS } from '../data/translations';
 import { saveNewsletter } from '../services/submissionService';
+import bhvLogo from '../assets/logoBHV.png';
 
 export default function Footer({ currentLang }) {
   const t = TRANSLATIONS[currentLang] || TRANSLATIONS.ES;
@@ -31,7 +32,7 @@ export default function Footer({ currentLang }) {
             <div className="flex items-center space-x-3">
               <Link to="/">
                 <img 
-                  src="/LogoBHV2026.png" 
+                  src={bhvLogo} 
                   alt="Biohub Venture Logo" 
                   className="h-12 w-auto object-contain bg-white/10 rounded-xl p-1 backdrop-blur-xs"
                 />
