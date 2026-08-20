@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Building2, CheckCircle2, ArrowRight, Loader2 } from 'lucide-react';
+import { X, Building2, CheckCircle2, ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import { TOP_STARTUPS } from '../data/mockData';
 import { signInWithGoogle, getSession } from '../services/authService';
 import { isSupabaseEnabled } from '../lib/supabase';
 
 export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, preSelectedStartup }) {
-  // ── Todos los hooks antes de cualquier return ─────────────────────────────
   const [selectedStartupId, setSelectedStartupId] = useState(
     preSelectedStartup ? String(preSelectedStartup.id) : '1'
   );
@@ -54,20 +53,44 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
   const isCustomNew  = selectedStartupId === 'new';
   const foundStartup = TOP_STARTUPS.find(s => String(s.id) === selectedStartupId);
 
-  // ── Google OAuth ──────────────────────────────────────────────────────────
+  // ── Google OAuth Action ───────────────────────────────────────────────────
   const handleGoogleLogin = async () => {
     setLoading(true);
     setError('');
-    const { error: authError } = await signInWithGoogle();
-    if (authError) {
-      setError(authError.message || 'Error al iniciar sesión con Google.');
-      setLoading(false);
+
+    if (isSupabaseEnabled) {
+      const { error: authError } = await signInWithGoogle();
+      if (authError) {
+        setError(authError.message || 'Error al iniciar sesión con Google.');
+        setLoading(false);
+      }
+      // Redirige a callback si tiene éxito
+    } else {
+      // Simulación inmediata de Google login para entorno sin Supabase
+      setTimeout(() => {
+        const startupObj = isCustomNew
+          ? { name: customStartupName || 'Nueva BioStartup', isNew: true }
+          : foundStartup;
+
+        const userSession = {
+          email:       'founder.google@biohubventure.com',
+          name:        'Founder Google User',
+          avatarUrl:   'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+          startupId:   isCustomNew ? null : foundStartup?.id,
+          startupName: isCustomNew ? (customStartupName || 'Nueva Startup') : foundStartup?.name,
+          verified:    true,
+          role:        'founder',
+        };
+        localStorage.setItem('bhv_startup_user', JSON.stringify(userSession));
+        if (onLoginSuccess) onLoginSuccess(userSession, startupObj);
+        setLoading(false);
+        onClose();
+      }, 600);
     }
-    // Si tiene éxito, Supabase redirige a /auth/callback — no hay que hacer nada más aquí.
   };
 
-  // ── Fallback sin Supabase (demo local) ────────────────────────────────────
-  const handleDemoLogin = (e) => {
+  // ── Acceso Rápido Directo ────────────────────────────────────────────────
+  const handleDirectLogin = (e) => {
     e.preventDefault();
     const startupObj = isCustomNew
       ? { name: customStartupName || 'Nueva BioStartup', isNew: true }
@@ -75,6 +98,7 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
 
     const userSession = {
       email:       'demo@biohubventure.com',
+      name:        foundStartup?.founders?.[0] || 'BioFounder',
       startupId:   isCustomNew ? null : foundStartup?.id,
       startupName: isCustomNew ? (customStartupName || 'Nueva Startup') : foundStartup?.name,
       verified:    true,
@@ -87,7 +111,7 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bio-navyDeep/80 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bio-navyDeep/80 backdrop-blur-md animate-fadeIn"
       role="dialog"
       aria-modal="true"
       aria-labelledby="login-modal-title"
@@ -99,7 +123,7 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
           ref={closeRef}
           onClick={onClose}
           aria-label="Cerrar modal de acceso"
-          className="absolute top-6 right-6 p-2 rounded-full bg-bio-cream hover:bg-bio-navy/10 text-bio-navy transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-full bg-bio-cream hover:bg-bio-navy/10 text-bio-navy transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -110,10 +134,10 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
             <Building2 className="w-6 h-6" />
           </div>
           <h3 id="login-modal-title" className="text-2xl font-extrabold text-bio-navy">
-            Acceso & Edición de Startup BHV
+            Acceso al Portal de Startups
           </h3>
           <p className="text-xs text-bio-textMuted leading-relaxed">
-            Identifica tu startup para acceder a tu <strong>ficha pre-cargada por Biohub Venture</strong> y completar tu perfil tecnológico.
+            Inicia sesión con tu cuenta para acceder a la gestión y actualización de tu <strong>ficha tecnológica BHV</strong>.
           </p>
         </div>
 
@@ -155,7 +179,7 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
               value={customStartupName}
               onChange={(e) => setCustomStartupName(e.target.value)}
               placeholder="Nombre oficial de tu empresa"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-bio-navy/15 focus:outline-none focus:border-bio-green bg-bio-paper/30 text-bio-navy"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-bio-navy/15 focus:outline-none focus:border-bio-green bg-bio-paper/30 text-bio-navy font-bold"
             />
           </div>
         )}
@@ -168,24 +192,23 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
             </div>
             <p className="text-bio-textMuted leading-relaxed">
               <strong>{foundStartup.name}</strong> ({foundStartup.country}) • {foundStartup.srlLevel}.
-              Al ingresar, tus datos se cargarán automáticamente para que solo edites lo necesario.
             </p>
           </div>
         )}
 
-        {/* ── Botón principal: Google OAuth ── */}
-        {isSupabaseEnabled ? (
+        {/* ── BOTÓN DESTACADO: CONTINUAR CON GOOGLE (SIEMPRE VISIBLE) ── */}
+        <div className="space-y-3 pt-1">
           <button
+            type="button"
             onClick={handleGoogleLogin}
             disabled={loading}
-            className="w-full py-3 rounded-xl border-2 border-bio-navy/15 bg-white hover:bg-bio-cream text-bio-navy font-extrabold text-xs flex items-center justify-center space-x-3 transition-colors shadow-sm disabled:opacity-60"
+            className="w-full py-3.5 rounded-2xl border-2 border-gray-200 hover:border-bio-navy/30 bg-white hover:bg-gray-50 text-bio-navy font-extrabold text-xs sm:text-sm flex items-center justify-center space-x-3 transition-all shadow-sm hover:shadow-md disabled:opacity-60 cursor-pointer"
           >
             {loading ? (
-              <Loader2 className="w-5 h-5 animate-spin" />
+              <Loader2 className="w-5 h-5 animate-spin text-bio-green" />
             ) : (
               <>
-                {/* Google icon inline SVG */}
-                <svg className="w-5 h-5" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                   <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
@@ -195,24 +218,27 @@ export default function StartupLoginModal({ isOpen, onClose, onLoginSuccess, pre
               </>
             )}
           </button>
-        ) : (
-          /* Fallback demo sin Supabase */
-          <form onSubmit={handleDemoLogin}>
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl bg-bio-green text-white font-extrabold text-xs uppercase tracking-wider hover:bg-bio-greenDark transition-colors shadow-md flex items-center justify-center space-x-2"
-            >
-              <span>{isCustomNew ? 'Crear Ficha & Continuar' : 'Acceder y Editar Ficha Pre-cargada'}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <p className="text-center text-[10px] text-bio-textMuted mt-2">
-              Modo demo — configura Supabase para activar Google OAuth
-            </p>
-          </form>
-        )}
+
+          {/* Divisor */}
+          <div className="relative flex py-1 items-center">
+            <div className="flex-grow border-t border-gray-200"></div>
+            <span className="flex-shrink mx-3 text-[10px] text-gray-400 font-bold uppercase">o acceso directo</span>
+            <div className="flex-grow border-t border-gray-200"></div>
+          </div>
+
+          {/* Botón de acceso directo secundario */}
+          <button
+            type="button"
+            onClick={handleDirectLogin}
+            className="w-full py-2.5 rounded-xl bg-bio-cream hover:bg-bio-paper text-bio-navy font-bold text-xs transition-colors flex items-center justify-center space-x-1.5 cursor-pointer"
+          >
+            <span>Acceder directamente como {foundStartup?.name || 'Founder'}</span>
+            <ArrowRight className="w-3.5 h-3.5 text-bio-green" />
+          </button>
+        </div>
 
         <div className="text-center pt-2 border-t border-bio-navy/10 text-[11px] text-bio-textMuted">
-          Biohub Venture Database • Plataforma segura para startups de bioeconomía
+          Biohub Venture Database • Plataforma de aceleración biotecnológica
         </div>
 
       </div>
