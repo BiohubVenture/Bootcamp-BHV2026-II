@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Sparkles, Globe, ArrowRight, Flame, BarChart3 } from 'lucide-react';
+import { Menu, X, ChevronDown, Sparkles, Globe, ArrowRight, Flame, BarChart3, ShieldCheck } from 'lucide-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { TRANSLATIONS } from '../data/translations';
 import bhvLogo from '../assets/logoBHV.png';

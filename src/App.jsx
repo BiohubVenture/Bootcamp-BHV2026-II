@@ -19,6 +19,7 @@ import ApplyPage from './pages/ApplyPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import MentionsPage from './pages/MentionsPage';
 import MentionsReviewPage from './pages/MentionsReviewPage';
+import StartupPortalPage from './pages/StartupPortalPage';
 import { onAuthStateChange, getSession } from './services/authService';
 
 export default function App() {
@@ -141,6 +142,7 @@ export default function App() {
             <Route path="/auth/callback" element={<AuthCallbackPage />} />
             <Route path="/menciones" element={<MentionsPage />} />
             <Route path="/admin/menciones" element={<MentionsReviewPage />} />
+            <Route path="/portal-startup" element={<StartupPortalPage />} />
           </Routes>
         </main>
 

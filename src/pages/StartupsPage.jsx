@@ -9,6 +9,7 @@ import {
 import StartupModal from '../components/StartupModal';
 import StartupLoginModal from '../components/StartupLoginModal';
 import SubmitTechnologyModal from '../components/SubmitTechnologyModal';
+import StartupPortal from '../components/StartupPortal';
 import { getStartupsDatabase } from '../services/dbService';
 
 export default function StartupsPage({ currentLang }) {
@@ -26,6 +27,7 @@ export default function StartupsPage({ currentLang }) {
   const [selectedStartup, setSelectedStartup] = useState(null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
   const [editingStartup, setEditingStartup] = useState(null);
   const [userSession, setUserSession] = useState(null);
 
@@ -138,52 +140,65 @@ export default function StartupsPage({ currentLang }) {
             </p>
           </div>
 
-          {/* User Auth & Submission Action Buttons */}
-          <div className="flex flex-wrap items-center gap-2.5">
+          {/* User Auth & Submission Action Buttons (Clean Integrated Toolbar) */}
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">
+            
+            {/* 1. Portal / Acceso Startup (Integrated Single Control) */}
             {userSession ? (
-              <div className="flex items-center space-x-2 bg-white px-3 py-1.5 rounded-xl border border-gray-200 shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-xs font-bold text-bio-navy">{userSession.startupName}</span>
+              <div className="flex items-center space-x-2 bg-white px-3.5 py-2 rounded-xl border border-bio-navy/20 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <button
+                  onClick={() => setIsPortalOpen(true)}
+                  className="text-xs font-extrabold text-bio-navy hover:text-bio-green transition-colors cursor-pointer flex items-center space-x-1"
+                  title="Abrir mi portal de startup"
+                >
+                  <span className="max-w-[120px] truncate">{userSession.startupName}</span>
+                  <span className="text-[9px] bg-bio-green/15 text-bio-greenDark px-1.5 py-0.5 rounded font-mono font-black">PORTAL</span>
+                </button>
                 <button
                   onClick={handleLogout}
-                  className="text-[11px] text-gray-400 hover:text-red-500 ml-2"
+                  className="text-[11px] text-gray-400 hover:text-red-500 ml-1 cursor-pointer"
+                  title="Cerrar sesión"
                 >
-                  Salir
+                  ✕
                 </button>
               </div>
             ) : (
               <button
                 onClick={() => setIsLoginModalOpen(true)}
-                className="px-4 py-2 rounded-xl bg-white border border-gray-300 hover:border-bio-navy text-bio-navy text-xs font-bold transition-all shadow-xs flex items-center space-x-1.5"
+                className="px-4 py-2.5 rounded-xl bg-bio-navy hover:bg-bio-navyDark text-white text-xs font-extrabold transition-all shadow-sm flex items-center space-x-1.5 cursor-pointer whitespace-nowrap"
+                title="Acceder al portal interno de la startup"
               >
-                <LogIn className="w-3.5 h-3.5" />
-                <span>Acceso Startups</span>
+                <ShieldCheck className="w-4 h-4 text-bio-neon" />
+                <span>Portal Startup</span>
               </button>
             )}
 
-            {/* Botón Ficha Tecnológica / Memoria Técnica en Paténtame */}
+            {/* 2. Ficha Tecnológica / Memoria Técnica en Paténtame */}
             <a
               href="https://patentame.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-xl bg-bio-green hover:bg-bio-greenDark text-white text-xs font-extrabold transition-all shadow-sm flex items-center space-x-1.5 cursor-pointer group"
-              title="Crear o revisar memoria técnica y ficha tecnológica en Paténtame"
+              className="px-4 py-2.5 rounded-xl bg-bio-green hover:bg-bio-greenDark text-white text-xs font-extrabold transition-all shadow-sm flex items-center space-x-1.5 cursor-pointer whitespace-nowrap group"
+              title="Crear o consultar memoria técnica en Paténtame"
             >
-              <FileText className="w-3.5 h-3.5" />
+              <FileText className="w-4 h-4" />
               <span>Ficha Tecnológica (Paténtame)</span>
               <ExternalLink className="w-3 h-3 ml-0.5 opacity-80 group-hover:translate-x-0.5 transition-transform" />
             </a>
 
-            {/* Investor Gateway WhatsApp Button */}
+            {/* 3. Investor Gateway WhatsApp Button */}
             <a
               href={`https://wa.me/51925836543?text=${investorWhatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-xl bg-bio-navy hover:bg-bio-navyDark text-white text-xs font-extrabold transition-all shadow-sm flex items-center space-x-1.5 cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-300 text-bio-navy text-xs font-extrabold transition-all shadow-xs flex items-center space-x-1.5 cursor-pointer whitespace-nowrap"
+              title="Conectar con el equipo de inversión por WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-bio-neon" />
+              <MessageCircle className="w-4 h-4 text-bio-green" />
               <span>Investor Gateway</span>
             </a>
+
           </div>
         </div>
 
@@ -512,7 +527,19 @@ export default function StartupsPage({ currentLang }) {
         onLoginSuccess={(session, startupObj) => {
           setUserSession(session);
           setEditingStartup(startupObj);
-          setIsSubmitModalOpen(true);
+          setIsPortalOpen(true);
+        }}
+      />
+
+      {/* Startup Founder Private Portal (Alumni vs Applicant) */}
+      <StartupPortal
+        isOpen={isPortalOpen}
+        onClose={() => setIsPortalOpen(false)}
+        startup={editingStartup || (userSession ? TOP_STARTUPS.find(s => s.id === userSession.startupId) : TOP_STARTUPS[0])}
+        userSession={userSession}
+        onUpdateStartup={(updated) => {
+          setEditingStartup(updated);
+          loadStartups();
         }}
       />
 
